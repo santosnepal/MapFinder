@@ -22,12 +22,19 @@ const inputDistance = document.querySelector(".form__input--distance");
 const inputDuration = document.querySelector(".form__input--duration");
 const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
-const inputButon = document.querySelector(".from__btn");
+const inputButon = document.querySelector("#ipb");
 const toh = document.querySelector("#tohide");
 const tos = document.querySelector("#toshow");
 const map = document.querySelector("#map");
-const saveData = function (locat) {
-  console.log(`why dada why`);
+const saveData = function (location, distance, duration, how, type) {
+  inputButon.addEventListener("click", function () {
+    if (type === "") {
+      type = inputType.value;
+    }
+    const data = [location, distance, duration, how, type];
+    console.log(data);
+    localStorage.setItem("", data);
+  });
 };
 const getData = function (location) {
   let ok1 = false,
@@ -56,6 +63,7 @@ const getData = function (location) {
       d = inputDistance.value;
       if (ok1 === true && ok2 === true && ok3 === true) {
         saveData(location, d, dur, how, typ);
+        inputButon.style.display = "grid";
       }
     }
   });
@@ -65,6 +73,7 @@ const getData = function (location) {
       dur = inputDuration.value;
       if (ok1 === true && ok2 === true && ok3 === true) {
         saveData(location, d, dur, how, typ);
+        inputButon.style.display = "grid";
       }
     }
   });
@@ -74,6 +83,7 @@ const getData = function (location) {
       how = inputCadence.value;
       if (ok1 === true && ok2 === true && ok3 === true) {
         saveData(location, d, dur, how, typ);
+        inputButon.style.display = "grid";
       }
     }
   });
@@ -83,6 +93,7 @@ const getData = function (location) {
       how = inputElevation.value;
       if (ok1 === true && ok2 === true && ok3 === true) {
         saveData(location, d, dur, how, typ);
+        inputButon.style.display = "grid";
       }
     }
   });
